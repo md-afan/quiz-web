@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="loading">...</div>
+        <h1>📝 Your Results 📝</h1>
+        
+        <div class="results">
+            <p>Final Score: <strong>{{ score }}</strong> points</p>
+            <p>Correct Answers: <strong>{{ correct }}/{{ total }}</strong></p>
+            <p>Time Taken: <strong>{{ time }} seconds</strong></p>
+        </div>
+        
+        <form action="/save" method="post">
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <button type="submit">Save Results 💾</button>
+        </form>
+        
+        <a href="/" class="button">Back to Leaderboard 🏠</a>
+    </div>
+</body>
+</html>

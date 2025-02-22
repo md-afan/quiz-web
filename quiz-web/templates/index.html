@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="loading">...</div>
+        <h1>Welcome to the Quiz Game! 🎮</h1>
+        
+        <h2>🏆 Leaderboard</h2>
+        <table class="rankings">
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Time</th>
+            </tr>
+            {% for entry in rankings %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ entry.name }}</td>
+                <td>{{ entry.score }}</td>
+                <td>{{ entry.time }}s</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No records yet! Be the first! 🚀</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <form action="/start" method="post">
+            <button type="submit">Start New Quiz! 🚀</button>
+        </form>
+    </div>
+</body>
+</html>
